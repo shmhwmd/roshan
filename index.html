@@ -450,6 +450,21 @@
         }
         .contact-link-item { width: auto; min-width: 220px; justify-content: center; }
     }
+    .portfolio-box {
+    margin-bottom: 30px; /* فاصله عمودی در موبایل */
+}
+    /* برای نمایش نمونه کارها کنار هم با فاصله */
+@media (min-width: 768px) {
+    .portfolio-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px; /* این مقدار را تغییر دهید تا فاصله بیشتر/کمتر شود */
+    }
+    
+    .section-title {
+        grid-column: 1 / -1; /* عنوان در بالای هر دو ستون */
+    }
+}
 </style>
 </head>
 <body>
