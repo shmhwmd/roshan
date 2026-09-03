@@ -8,54 +8,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
+    /* =============================================
+       استایل پایه (مخصوص موبایل - Mobile First)
+       ============================================= */
     :root {
         --bg-dark: #0f1115;
         --bg-card: #1c1e26;
         --text-main: #ffffff;
-        --text-dim: #a5a3b5; 
-        
-        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
-        --accent: #38bdf8;   /* آبی آسمانی روشن */
-        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
-        --accent-2: #3b82f6;  /* آبی */
+        --text-dim: #a5a3b5;
+        --accent: #38bdf8;
+        --accent-2: #3b82f6;
         --border: #2a2c35;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
         font-family: 'Vazirmatn', sans-serif;
         background: var(--bg-dark);
         color: var(--text-main);
         line-height: 1.7;
-        -webkit-font-smoothing: antialiased;
-        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+        overflow-x: hidden;
     }
 
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-
-    /* ---------- هدر ---------- */
+    /* ---------- هدر (پایه موبایل) ---------- */
     header {
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(15, 17, 21, 0.8);
-        backdrop-filter: blur(12px);
+        background: rgba(15, 17, 21, 0.9);
+        backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
     }
 
-    /* تغییر اصلی: اینجا padding افقی اضافه شد تا از لبه‌ها فاصله بگیره */
     .header-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
-        padding: 16px 24px; /* از 16px 0 به 16px 24px تغییر کرد */
+        /* فاصله امن از لبه‌ها در موبایل: 16 پیکسل */
+        padding: 14px 16px; 
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
     .logo {
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 800;
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
         -webkit-background-clip: text;
@@ -63,43 +60,78 @@
         letter-spacing: 1px;
     }
 
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    /* دکمه منوی موبایل (آیکون مجزا) */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text-main);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* وقتی منو باز است به ضربدر تبدیل می‌شود */
+    .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ---------- منوی موبایل (حالت کشویی) ---------- */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: var(--bg-dark);
+        padding: 20px;
+        border-bottom: 1px solid var(--border);
+        gap: 15px;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+        color: var(--text-dim);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
     .nav-links a:hover { color: var(--accent); }
 
+    /* دکمه شروع پروژه (فقط در منوی موبایل) */
     .btn-header {
+        display: block;
+        text-align: center;
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
         color: #fff;
-        padding: 10px 24px;
+        padding: 12px;
         border-radius: 50px;
         font-weight: 700;
         text-decoration: none;
-        transition: opacity 0.3s, transform 0.3s;
-        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        margin-top: 10px;
     }
 
-    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    /* منوی همبرگری موبایل */
-    .menu-toggle {
-        display: none;
-        width: 30px;
-        height: 30px;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        cursor: pointer;
-    }
-    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
-
-    /* ---------- هیرو (خانه) ---------- */
+    /* ---------- هیرو ---------- */
     .hero {
-        padding: 80px 0;
+        padding: 60px 0;
         text-align: center;
-        min-height: 50vh; /* اصلاح برای موبایل */
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .hero-kicker {
@@ -108,12 +140,11 @@
         -webkit-text-fill-color: transparent;
         font-size: 1rem;
         font-weight: 600;
-        letter-spacing: 1px;
         margin-bottom: 12px;
     }
 
     .hero-title {
-        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-size: 2rem;
         font-weight: 800;
         line-height: 1.4;
         color: var(--text-main);
@@ -122,60 +153,50 @@
 
     .hero-desc {
         max-width: 600px;
-        margin: 0 auto 40px;
+        margin: 0 auto 30px;
         color: var(--text-dim);
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
-    /* ---------- بخش نمونه کار ---------- */
+    /* ---------- نمونه کار ---------- */
     .portfolio-section {
-        padding: 20px 0 80px;
+        padding: 20px 16px 60px; /* فاصله امن از لبه‌ها */
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 800;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         text-align: center;
         color: var(--text-main);
     }
 
-    /* لینک نمونه کار به سایت واقعی */
     .portfolio-box {
         display: block;
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         text-decoration: none;
-    }
-
-    .portfolio-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
-        border-color: var(--accent);
     }
 
     .portfolio-image {
         width: 100%;
-        height: 250px;
+        height: 180px;
         object-fit: cover;
         border-bottom: 1px solid var(--border);
     }
 
     .portfolio-details {
-        padding: 24px;
+        padding: 20px;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
-    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-details h3 { font-size: 1.3rem; font-weight: 800; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; }
+    
     .portfolio-tag {
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
         color: #fff;
@@ -183,11 +204,13 @@
         border-radius: 20px;
         font-size: 0.9rem;
         font-weight: 700;
+        text-align: center;
+        align-self: flex-start;
     }
 
-    /* ---------- بخش تماس با ما ---------- */
+    /* ---------- تماس با ما ---------- */
     .contact-section {
-        padding: 80px 0;
+        padding: 60px 16px;
         border-top: 1px solid var(--border);
         text-align: center;
     }
@@ -196,13 +219,11 @@
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: 16px;
-        padding: 40px;
-        max-width: 600px;
-        margin: 0 auto;
+        padding: 30px 20px;
     }
 
     .contact-box h2 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         font-weight: 800;
         margin-bottom: 15px;
         color: var(--text-main);
@@ -214,77 +235,104 @@
     }
 
     .contact-info {
-        margin-bottom: 20px;
         color: var(--text-main);
         font-weight: 600;
+        line-height: 2;
     }
 
-    /* ---------- واکنش گرایی (موبایل) ---------- */
-    @media (max-width: 768px) {
-        .nav-links, .btn-header { display: none; }
-        
-        /* اصلاح منوی بازشونده موبایل */
-        .nav-links.open {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%; /* دقیقاً زیر هدر */
-            right: 0;
-            left: 0;
-            background: var(--bg-dark);
-            padding: 20px;
-            border-bottom: 1px solid var(--border);
-            gap: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    /* =============================================
+       استایل دسکتاپ (فقط وقتی صفحه بزرگ است)
+       ============================================= */
+    @media (min-width: 768px) {
+        /* هدر دسکتاپ */
+        .header-inner {
+            padding: 16px 24px;
         }
 
-        .menu-toggle { display: flex; margin: 0 8px; } /* حالا با padding هدر، فاصله زیبا خواهد بود */
-        
-        .hero { min-height: auto; padding: 60px 0; }
-        .portfolio-image { height: 180px; }
-        .portfolio-details { flex-direction: column; align-items: flex-start; }
+        /* مخفی کردن دکمه منو و نمایش لینک‌ها */
+        .menu-toggle { display: none; }
+
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            background: transparent;
+            border: none;
+            padding: 0;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            border-bottom: none;
+            padding: 0;
+        }
+
+        /* دکمه شروع پروژه در هدر دسکتاپ */
+        .btn-header {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 0;
+        }
+
+        /* تنظیم بخش‌ها برای دسکتاپ */
+        .hero { padding: 100px 0; }
+        .hero-title { font-size: 3.2rem; }
+
+        .portfolio-section { padding: 20px 24px 80px; }
+        .section-title { font-size: 1.8rem; }
+
+        .portfolio-image { height: 250px; }
+        .portfolio-details { flex-direction: row; align-items: center; justify-content: space-between; }
+        .portfolio-tag { align-self: auto; }
+
+        .contact-section { padding: 80px 24px; }
+        .contact-box { padding: 40px; }
     }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="container header-inner">
+    <div class="header-inner">
         <div class="logo">ROSHAN</div>
         
-        <div class="nav-links" id="navLinks">
+        <nav class="nav-links" id="navLinks">
             <a href="#home">خانه</a>
             <a href="#portfolio">نمونه کار</a>
             <a href="#contact">تماس با ما</a>
-        </div>
+            <!-- دکمه شروع پروژه فقط در منوی موبایل -->
+            <a href="#contact" class="btn-header">شروع پروژه</a>
+        </nav>
 
-        <a href="#contact" class="btn-header">شروع پروژه</a>
-
-        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
-        <div class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="باز و بسته کردن منو">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </div>
 </header>
 
 <main>
     <!-- بخش خانه -->
-    <section class="hero container" id="home">
-        <div>
+    <section class="hero" id="home">
+        <div class="container">
             <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
             <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
             <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
         </div>
     </section>
 
-    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
-    <section class="portfolio-section container" id="portfolio">
+    <!-- بخش نمونه کار -->
+    <section class="portfolio-section" id="portfolio">
         <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
 
         <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
-            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
             <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
             
             <div class="portfolio-details">
@@ -298,7 +346,7 @@
     </section>
 
     <!-- بخش تماس با ما -->
-    <section class="contact-section container" id="contact">
+    <section class="contact-section" id="contact">
         <div class="contact-box">
             <h2>بیایید با هم صحبت کنیم</h2>
             <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
@@ -310,19 +358,19 @@
     </section>
 </main>
 
-<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
 <script>
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('open');
+        menuToggle.classList.toggle('open');
     });
 
-    // بستن منو بعد از کلیک روی لینک
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('open');
+            menuToggle.classList.remove('open');
         });
     });
 </script>
