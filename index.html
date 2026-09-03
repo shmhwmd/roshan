@@ -237,7 +237,2318 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        .menu-toggle { display: flex; }
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
+        
+        .hero { min-height: auto; padding: 60px 0; }
+        .portfolio-image { height: 180px; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">ROSHAN</div>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">خانه</a>
+            <a href="#portfolio">نمونه کار</a>
+            <a href="#contact">تماس با ما</a>
+        </div>
+
+        <a href="#contact" class="btn-header">شروع پروژه</a>
+
+        <!-- دکمه همبرگری (فقط در موبایل دیده می‌شود) -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- بخش خانه -->
+    <section class="hero container" id="home">
+        <div>
+            <p class="hero-kicker">آژانس دیجیتال مارکتینگ روشن</p>
+            <h1 class="hero-title">طراحی وبسایت و تبلیغات<br>با رویکردی مدرن و حرفه‌ای</h1>
+            <p class="hero-desc">تیم روشن با ترکیب خلاقیت و داده، برند شما را به اوج می‌رساند.</p>
+        </div>
+    </section>
+
+    <!-- بخش نمونه کار (لینک به سایت واقعی) -->
+    <section class="portfolio-section container" id="portfolio">
+        <h2 class="section-title">نمونه کار اخیر: کافه لویال</h2>
+
+        <a href="rest1/restaurant1.html" target="_blank" class="portfolio-box">
+            <!-- می‌توانید این عکس را با عکس واقعی سایت کافه لویال جایگزین کنید -->
+            <img class="portfolio-image" src="rest1/Pizza.jpg" alt="پیش نمایش سایت کافه لویال">
+            
+            <div class="portfolio-details">
+                <div>
+                    <h3>وبسایت منوی رستوران</h3>
+                    <p>طراحی رابط کاربری، کدنویسی واکنش‌گرا و بهینه‌سازی سئو برای سفارش آنلاین غذا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-box">
+            <h2>بیایید با هم صحبت کنیم</h2>
+            <p>برای شروع پروژه دیجیتال مارکتینگ خود، همین حالا با ما در تماس باشید.</p>
+            <div class="contact-info">
+                <p>ایمیل: info@roshanaid.ir</p>
+                <p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- جاوااسکریپت ساده برای باز و بسته کردن منوی موبایل -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+    // بستن منو بعد از کلیک روی لینک
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آژانس ROSHAN | نمونه کار کافه لویال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-dark: #0f1115;
+        --bg-card: #1c1e26;
+        --text-main: #ffffff;
+        --text-dim: #a5a3b5; 
+        
+        /* تغییر رنگ‌ها: کاهش بنفش، افزایش آبی روشن */
+        --accent: #38bdf8;   /* آبی آسمانی روشن */
+        --accent-hover: #0ea5e9; /* آبی روشن‌تر */
+        --accent-2: #3b82f6;  /* آبی */
+        --border: #2a2c35;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-main);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden; /* جلوگیری از اسکرول افقی در گوشی */
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- هدر ---------- */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(15, 17, 21, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 16px 0;
+    }
+
+    .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-header {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.3s, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-header:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* منوی همبرگری موبایل */
+    .menu-toggle {
+        display: none;
+        width: 30px;
+        height: 30px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .menu-toggle span { display: block; height: 2px; width: 100%; background: var(--text-main); }
+
+    /* ---------- هیرو (خانه) ---------- */
+    .hero {
+        padding: 80px 0;
+        text-align: center;
+        min-height: 50vh; /* اصلاح برای موبایل */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-kicker {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.4;
+        color: var(--text-main);
+        margin-bottom: 20px;
+    }
+
+    .hero-desc {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        color: var(--text-dim);
+        font-size: 1.1rem;
+    }
+
+    /* ---------- بخش نمونه کار ---------- */
+    .portfolio-section {
+        padding: 20px 0 80px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-align: center;
+        color: var(--text-main);
+    }
+
+    /* لینک نمونه کار به سایت واقعی */
+    .portfolio-box {
+        display: block;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-decoration: none;
+    }
+
+    .portfolio-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
+        border-color: var(--accent);
+    }
+
+    .portfolio-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .portfolio-details {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-details h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .portfolio-details p { color: var(--text-dim); font-size: 0.95rem; max-width: 400px; }
+    .portfolio-tag {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* ---------- بخش تماس با ما ---------- */
+    .contact-section {
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .contact-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-box h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-main);
+    }
+
+    .contact-box p {
+        color: var(--text-dim);
+        margin-bottom: 30px;
+    }
+
+    .contact-info {
+        margin-bottom: 20px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* ---------- واکنش گرایی (موبایل) ---------- */
+    @media (max-width: 768px) {
+        .nav-links, .btn-header { display: none; }
+        
+        /* اصلاح منوی بازشونده موبایل */
+        .nav-links.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* دقیقاً زیر هدر */
+            right: 0;
+            left: 0;
+            background: var(--bg-dark);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* تغییر اصلی: اضافه کردن فاصله از لبه ها به آیکون منو */
+        .menu-toggle { display: flex; margin: 0 16px; }
         
         .hero { min-height: auto; padding: 60px 0; }
         .portfolio-image { height: 180px; }
