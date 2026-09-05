@@ -401,7 +401,7 @@
     .contact-link-item.telegram:hover svg { fill: #229ED9; }
     .contact-link-item.whatsapp:hover svg { fill: #25D366; }
 
-    /* ---------- دسکتاپ ---------- */
+    /* ---------- دسکتاپ (سه ستونه) ---------- */
     @media (min-width: 768px) {
         .header-inner { padding: 16px 24px; }
         .menu-toggle { display: none; }
@@ -436,9 +436,20 @@
         .portfolio-section { padding: 20px 24px 80px; }
         .section-title { font-size: 2.2rem; }
 
+        /* چیدمان سه ستونه برای سه نمونه کار */
+        .portfolio-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .section-title {
+            grid-column: 1 / -1;
+        }
+
         .portfolio-image { height: 300px; }
-        .portfolio-details { flex-direction: row; align-items: center; justify-content: space-between; }
-        .portfolio-tag { align-self: auto; }
+        .portfolio-details { flex-direction: column; align-items: flex-start; }
+        .portfolio-tag { align-self: flex-start; }
 
         .contact-section { padding: 80px 24px; }
         .contact-box { padding: 50px; }
@@ -450,21 +461,6 @@
         }
         .contact-link-item { width: auto; min-width: 220px; justify-content: center; }
     }
-    .portfolio-box {
-    margin-bottom: 30px; /* فاصله عمودی در موبایل */
-}
-    /* برای نمایش نمونه کارها کنار هم با فاصله */
-@media (min-width: 768px) {
-    .portfolio-section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px; /* این مقدار را تغییر دهید تا فاصله بیشتر/کمتر شود */
-    }
-    
-    .section-title {
-        grid-column: 1 / -1; /* عنوان در بالای هر دو ستون */
-    }
-}
 </style>
 </head>
 <body>
@@ -519,27 +515,30 @@
                 <span class="portfolio-tag">مشاهده سایت</span>
             </div>
         </a>
-        <a href="car1/index.html" target="_blank" class="portfolio-box reveal">
-    <img class="portfolio-image" src="car1/gclass.jpg" alt="پیش نمایش سایت روشن موتور">
-    <div class="portfolio-details">
-        <div>
-            <h3>شرکت روشن موتور</h3>
-            <p>طراحی وبسایت شرکتی، کاتالوگ آنلاین خودرو و درگاه استعلام قیمت.</p>
-        </div>
-        <span class="portfolio-tag">مشاهده سایت</span>
-    </div>
-</a>
-        <!-- نمونه کار سوم: کافه روشن -->
-<a href="rest2/menu2.html" target="_blank" class="portfolio-box reveal">
-    <img class="portfolio-image" src="rest2/pizza2.jpg" alt="پیش نمایش سایت کافه روشن">
-    <div class="portfolio-details">
-        <div>
-            <h3>کافه روشن</h3>
-            <p>طراحی وبسایت منوی دیجیتال و بهینه‌سازی برای موبایل.</p>
-        </div>
-        <span class="portfolio-tag">مشاهده سایت</span>
-    </div>
-</a>
+        
+        <!-- نمونه کار دوم: کافه روشن -->
+        <a href="rest2/menu2.html" target="_blank" class="portfolio-box reveal">
+            <img class="portfolio-image" src="rest2/pizza2.jpg" alt="پیش نمایش سایت کافه روشن">
+            <div class="portfolio-details">
+                <div>
+                    <h3>کافه روشن</h3>
+                    <p>طراحی وبسایت منوی دیجیتال و بهینه‌سازی برای موبایل.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
+
+        <!-- نمونه کار سوم: کافه روشن (طرح جدید) -->
+        <a href="rest2/menu3.html" target="_blank" class="portfolio-box reveal">
+            <img class="portfolio-image" src="rest2/drinks.jpg" alt="پیش نمایش سایت کافه روشن طرح جدید">
+            <div class="portfolio-details">
+                <div>
+                    <h3>کافه روشن (طرح جدید)</h3>
+                    <p>طراحی منوی دیجیتال با تمرکز بر تجربه کاربری و سرعت بالا.</p>
+                </div>
+                <span class="portfolio-tag">مشاهده سایت</span>
+            </div>
+        </a>
     </section>
 
     <!-- بخش تماس با ما -->
